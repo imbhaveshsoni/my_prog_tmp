@@ -1,0 +1,114 @@
+{% extends 'base.html' %} 
+{%  load static %}
+{% block title %} | service {% endblock %}
+
+
+{% block content %}
+ <div class="container my-5">
+<!--Section: Design Block-->
+      <section>
+        <div class="mt-3"></div>
+        <h3 class="text-center mb-5" style="color: #112f6b;">Our Services</h3>
+
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body mt-3 mb-2">
+                <h5 style="color: #112f6b;">
+                  <i class="fas fa-square text-danger me-2 mb-4"></i>Web Design
+                </h5>
+                <p class="mb-4">
+                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                  sapiente earu proident. Ad vegan excepteur butcher vice lomo leggings.
+                </p>
+                <a href="#" class="stretched-link text-danger">read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body mt-3 mb-2">
+                <h5 style="color: #112f6b;">
+                  <i class="fas fa-square text-danger me-2 mb-4"></i>Development
+                </h5>
+                <p class="mb-4">
+                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                  sapiente earu proident. Ad vegan excepteur butcher vice lomo leggings.
+                </p>
+                <a href="#" class="stretched-link text-danger">read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <div class="card">
+              <div class="card-body mt-3 mb-2">
+                <h5 style="color: #112f6b;">
+                  <i class="fas fa-square text-danger me-2 mb-4"></i>Branding
+                </h5>
+                <p class="mb-4">
+                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                  sapiente earu proident. Ad vegan excepteur butcher vice lomo leggings.
+                </p>
+                <a href="#" class="stretched-link text-danger">read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-0">
+            <div class="card">
+              <div class="card-body mt-3 mb-2">
+                <h5 style="color: #112f6b;">
+                  <i class="fas fa-square text-danger me-2 mb-4"></i>Marketing
+                </h5>
+                <p class="mb-4">
+                  Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                  sapiente earu proident. Ad vegan excepteur butcher vice lomo leggings.
+                </p>
+                <a href="#" class="stretched-link text-danger">read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Design Block-->
+
+      <!--Section: Design Block-->
+      <hr class="my-5" />
+      <section>
+        <h3 class="text-center mb-5" style="color: #112f6b;">Our Projects</h3>
+
+        <div class="lightbox">
+          <div class="row">
+            <div class="col-lg-4">
+              <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg"
+                data-mdb-img="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" alt="Lightbox image 1"
+                class="w-100 mb-4" />
+              <img src="https://mdbootstrap.com/img/Photos/Vertical/7.jpg"
+                data-mdb-img="https://mdbootstrap.com/img/Photos/Vertical/7.jpg" alt="Lightbox image 2"
+                class="w-100 mb-4" />
+            </div>
+            <div class="col-lg-4">
+              <img src="https://mdbootstrap.com/img/Photos/Vertical/4.jpg"
+                data-mdb-img="https://mdbootstrap.com/img/Photos/Vertical/4.jpg" alt="Lightbox image 3"
+                class="w-100 mb-4" />
+              <img src="https://mdbootstrap.com/img/Photos/Others/images/63.jpg"
+                data-mdb-img="https://mdbootstrap.com/img/Photos/Others/images/63.jpg" alt="Lightbox image 4"
+                class="w-100 mb-4" />
+            </div>
+            <div class="col-lg-4">
+              <img src="https://mdbootstrap.com/img/Photos/Others/images/64.jpg"
+                data-mdb-img="https://mdbootstrap.com/img/Photos/Others/images/64.jpg" alt="Lightbox image 5"
+                class="w-100 mb-4" />
+              <img src="https://mdbootstrap.com/img/Photos/Vertical/5.jpg"
+                data-mdb-img="https://mdbootstrap.com/img/Photos/Vertical/5.jpg" alt="Lightbox image 6"
+                class="w-100 mb-4" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Design Block-->
+</div>
+{% include 'partials/_footer.html' %}
+{% endblock %}

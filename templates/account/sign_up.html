@@ -1,0 +1,149 @@
+{% extends 'base.html' %} 
+
+
+{%  load static %}
+
+{% block title %} | signup {% endblock %}
+
+
+{% block content %}
+
+		<!-- Components Vendor Styles -->
+<link rel="stylesheet" href="{% static  'stream-dashboard-ui-kit/assets/vendor/font-awesome/css/all.min.css' %}">
+
+		<!-- Theme Styles -->
+<link rel="stylesheet" href="{% static  'stream-dashboard-ui-kit/assets/css/theme.css' %}">
+
+
+<main class="container-fluid w-100" role="main">
+			<div class="row">
+				<div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
+					<div class=" py-3 mb-auto" >
+					</div>
+
+					<div class="u-login-form">
+						<form action="{% url 'sign_up' %}" enctype ="multipart/form-data" method="POST">{% csrf_token %}
+							<div class="mb-3">
+								<h1 class="h2">Claim Your Free account!</h1>
+								<p class="small">Login to your dashboard with your registered email address and password.</p>
+							</div>
+							{% include 'partials/alerts.html' %}
+							<label>Your Profile</label>
+							<div class="form-group" style='margin-left: calc(50% - 75px);margin-bottom:70px'>
+			                    <div class='ProfileImagePreviewContainer' style="width:150px; height:150px;border-radius: 50%; border:2px solid #ccc;overflow: hidden;">
+			                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png" class='ProfileImagePrevie' id='ProfileImagePreview' style="width:100%; height: 100%" />
+			                    </div>
+			                    <div style='margin-top: -86px; margin-left: 40px;'>
+			                      <label for="ProfileImage" id='ProfileImageLabel' style='color: #ffffff; background: #000000; opacity: 0.5; padding: 0px 10px; border-radius: 10px; cursor: pointer;'>Profile</label>
+			                    </div>
+			                    <input type="file" name="ProfileImage" id='ProfileImage' class=" form-control" required hidden="true" accept="image/x-png,image/jpeg">
+			                 </div>
+			                 
+							<div class="form-group mb-4">
+								<label for="fname">Full Name</label>
+								<input id="fname" class="form-control" name="fname" type="text" placeholder="first name">
+							</div>
+							<div class="form-group mb-4">
+								<label for="lname">last Name</label>
+								<input id="lname" class="form-control" name="lname" type="text" placeholder="last name">
+							</div>
+							<div class="form-group mb-4">
+								<label for="email">Your email</label>
+								<input id="email" class="form-control" name="email" type="email" placeholder="john.doe@example.com">
+							</div>
+
+							<div class="form-row">
+								<div class="col-md-6">
+									<div class="form-group mb-4">
+										<label for="password">Password</label>
+										<input id="password" class="form-control" name="password" type="password" placeholder="Enter your password">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group mb-4">
+										<label for="confirmPassword">Confirm password</label>
+										<input id="confirmPassword" class="form-control" name="confirmPassword" type="password" placeholder="Re-enter your password">
+									</div>
+								</div>
+							</div>
+
+							<button class="btn btn-primary btn-block" type="submit">Sing Up</button>
+						</form>
+
+						<p class="small">
+							Already have an account? <a href="{% url 'sign_in' %}">Login here</a>
+						</p>
+					</div>
+
+					<div class="u-login-form text-muted py-3 mt-auto">
+						<small><i class="far fa-question-circle mr-1"></i> If you are not able to sign up, please <a href="#">contact us</a>.</small>
+					</div>
+				</div>
+
+				<div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
+					<img class="img-fluid position-relative u-z-index-3 mx-5" src="{% static  'stream-dashboard-ui-kit/assets/svg/mockups/mockup.svg' %}" alt="Image description">
+
+					<figure class="u-shape u-shape--top-right u-shape--position-5">
+						<img src="{% static  'stream-dashboard-ui-kit/assets/svg/shapes/shape-1.svg' %}" alt="Image description">
+					</figure>
+					<figure class="u-shape u-shape--center-left u-shape--position-6">
+						<img src="{% static  'stream-dashboard-ui-kit/assets/svg/shapes/shape-2.svg' %}" alt="Image description">
+					</figure>
+					<figure class="u-shape u-shape--center-right u-shape--position-7">
+						<img src="{% static  'stream-dashboard-ui-kit/assets/svg/shapes/shape-3.svg' %}" alt="Image description">
+					</figure>
+					<figure class="u-shape u-shape--bottom-left u-shape--position-8">
+						<img src="{% static  'stream-dashboard-ui-kit/assets/svg/shapes/shape-4.svg' %}" alt="Image description">
+					</figure>
+				</div>
+			</div>
+		</main>
+ <script>
+    $("#ProfileImage").change(function(e){
+      if(this.files.length == 1){
+        var file = this.files[0];
+        var fileType = file["type"];
+        var validImageTypes = ["image/jpeg", "image/png"];
+        if ($.inArray(fileType, validImageTypes) < 0) {
+          swal.fire('',"Invalid file type", "error")
+          .then((value) => {
+            $("#ProfileImage").click();  
+          });
+          return false;
+        }else{
+          if((this.files[0].size/1024).toFixed(2) < 2048){
+            if (this.files && this.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                $('#ProfileImagePreview').attr('src', e.target.result);
+              }
+              reader.readAsDataURL(this.files[0]);
+            }
+          }else{
+            swal.fire("Image size must be under 2 mb", "", "warning")
+            .then((value) => {
+              $('#ProfileImagePreview').attr('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');
+              $("#ProfileImage").click();
+            });
+          }
+        }
+      }else{
+        if(this.files.length > 1){
+          swal.fire("Select only one Profile image", "", "warning")
+          .then((value) => {
+            $('#ProfileImagePreview').attr('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');
+            $("#ProfileImage").click();
+          });
+        }else{
+          swal.fire("Profile image must required", "", "warning")
+          .then((value) => {
+            $('#ProfileImagePreview').attr('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');
+            $("#ProfileImage").click();
+          });
+        }
+        return false;
+      }
+    });
+  </script>
+{% endblock %}

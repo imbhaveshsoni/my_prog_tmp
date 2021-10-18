@@ -1,0 +1,201 @@
+{% load static %}
+
+<style type="text/css">
+  @media (max-width: 991px) {
+  .navbar-scroll {
+    background-color: #fff;
+  }
+}      
+.navbar-scroll .nav-link,
+.navbar-scroll .fa-bars,
+.navbar-scroll .navbar-brand {
+  color: #4f4f4f;
+}
+.navbar-scrolled .navbar-brand {
+  color: #4f4f4f;
+}
+@media (min-width: 768px) and (max-width: 800px) {
+  #intro {
+    height: 100vh;
+  }
+}
+@media (min-width: 850px) {
+  #intro {
+    height: 100vh;
+  }
+}
+
+</style>
+<style type="text/css">
+  
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+</style>
+<nav class="navbar navbar-expand-lg fixed-top navbar-scroll">
+      <div class="container">
+        <a class="navbar-brand" href="#!">Mypro</a>
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/services">Services</a>
+            </li>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button"id="dropdownMenuButton"data-mdb-toggle="dropdown"aria-expanded="false">
+               IOT
+              </button>
+              <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-submenu">
+                  <a  class="dropdown-item" tabindex="-1" href="#">PLATFORM &raquo</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{domain_name}}/Content?cat=cat_iot-platform_arduino">ARDUINO</a></li>
+                    <li><a class="dropdown-item" href="{{domain_name}}/Content?cat=cat_iot-platform_respberrypi">RESPBERRY PI</a></li>
+                    
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="mx-2"></div>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button"id="dropdownMenuButton"data-mdb-toggle="dropdown"aria-expanded="false">
+               SOFTWARE
+              </button>
+              <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-submenu">
+                  <a  class="dropdown-item" tabindex="-1" href="#">PLATFORM &raquo</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{domain_name}}/Content?cat=cat_software-platform_arduino">ARDUINO</a></li>
+                    <li><a class="dropdown-item" href="{{domain_name}}/Content?cat=cat_software-platform_web">WEB</a></li>
+                    <li><a class="dropdown-item" href="">RESPBERRY PI</a></li>
+                    
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a  class="dropdown-item" tabindex="-1" href="#">LANGUAGE &raquo</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item"  href="{{domain_name}}/Content?cat=cat_software-language_python">PYTHON</a></li>
+                    <li><a class="dropdown-item" href="{{domain_name}}/Content?cat=cat_software-language_php">PHP</a></li>
+                    <li><a class="dropdown-item" href="{{domain_name}}/Content?cat=cat_software-language_java">JAVA</a></li>
+                    <li><a class="dropdown-item" href="{{domain_name}}/Content?cat=cat_software-language_javascript">JAVASCRIPT</a></li>
+                    <li><a class="dropdown-item" href="{{domain_name}}/Content?cat=cat_software-language_nodejs">NODE JS</a></li>
+                 </ul>
+                </li>
+              </ul>
+            </div>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav d-flex flex-row">
+          {% if is_login_status_response == 'True' %}
+            <li 
+            {% if 'dashboard' in  request.path %}
+                  class="nav-item active mr-3"
+                {% else %}
+                  class="nav-item  mr-3" 
+              {% endif %}
+            > 
+            <a class="nav-link" href="{% url 'dashboard'  %}">
+              <img style="height:30px;width: 30px" class="rounded-circle account-img" src="{{domain_name}}/Media/register_account/{{ login_status_server_response.account_id}}/profile_image/{{ login_status_server_response.profile_id }}">
+             
+                {{ login_status_server_response.fname }}{{ login_status_server_response.lname }}
+            
+            </a>
+            </li>
+
+            <li class="nav-item mr-3">
+              <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+                <i class="fas fa-sign-out-alt">sign out</i>
+                <form action="{% url 'sign_out' %}" method="POST"  id="logout">
+                  {% csrf_token %}
+                  <input type="hidden">
+                </form>
+              </a>
+            </li>
+          {% else %}
+            <li 
+              {% if 'sign_up' in  request.path %}
+                        class="nav-item active mr-3"
+                    {% else %}
+                        class="nav-item  mr-3"
+                {% endif %}
+            >
+              <a class="nav-link" href="{% url 'sign_up'  %}">
+                <i class="fas fa-user-plus"></i> sign up</a>
+            </li>
+            <li
+              {% if 'sign_in' in  request.path %}
+                class="nav-item active mr-3"
+              {% else %}
+                class="nav-item  mr-3"
+              {% endif %}
+              >
+              <a class="nav-link" href="{% url 'sign_in'  %}">
+                <i class="fas fa-sign-in-alt"></i>
+
+                sign in</a>
+            </li>
+          {% endif %}  
+           
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="my-5"></div>

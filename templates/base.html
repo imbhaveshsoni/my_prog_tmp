@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypro - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static  'assets/mdb-ui-kit-pro-advanced-3.0.0/css/mdb.min.css' %}" />
+        <!-- MDB PLUGINS -->
+    <link rel="stylesheet" href="{% static  'assets/mdb-ui-kit-pro-advanced-3.0.0/plugins/css/all.min.css' %}" />
+
+    <!-- Web Fonts -->
+    <!-- <link href="../../../fonts.googleapis.com/cssff98.css?family=Open+Sans:300,400,600,700" rel="stylesheet"> -->
+    
+
+   
+
+    <!-- Components Vendor Styles -->
+    <link rel="stylesheet" href="{% static  'assets/vendor/font-awesome/css/all.min.css' %}">
+
+   
+
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous">
+    </script>
+   
+    <!-- Nav bar -->
+    {% include 'partials/_navbar.html' %}
+    <!-- Main content -->
+    {% block content %} {% endblock %}
+    <!-- Footer -->
+    <script type="text/javascript" src="{% static  'assets/mdb-ui-kit-pro-advanced-3.0.0/js/mdb.min.js' %}"></script>
+        <!-- MDB PLUGINS -->
+    <script type="text/javascript" src="{% static  'assets/mdb-ui-kit-pro-advanced-3.0.0/plugins/js/all.min.js' %}"></script>
+    <!-- <script src="{% static  'js/jquery-3.3.1.min.js' %} "></script> -->
+    
+   <!--  <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
+    <script src="{% static 'js/lightbox.min.js' %} "></script>
+    <script src="{% static 'js/main.js' %} "></script> -->
+</body>
+</html>

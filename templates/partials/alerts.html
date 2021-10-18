@@ -1,0 +1,44 @@
+{% load static %}
+{% if messages %}
+    {% for message in messages %}
+    <div id="message" class="container">
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-soft-danger fade show" role="alert">
+            <i class="fa fa-minus-circle alert-icon mr-3"></i>
+            <strong>
+                ERROR:{{message}}
+            </strong>
+            
+            <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert alert-soft-success fade show" role="alert">
+            <i class="fa fa-check-circle alert-icon mr-3"></i>
+            <strong>
+                Success:{{message}}
+            </strong>
+            <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+                    
+        {% endif %}
+        
+        
+    </div>
+    <script src="{% static  'stream-dashboard-ui-kit/assets/vendor/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static  'stream-dashboard-ui-kit/assets/vendor/jquery-migrate/jquery-migrate.min.js' %}"></script>
+        <script src="{% static  'stream-dashboard-ui-kit/assets/vendor/popper.js/dist/umd/popper.min.js' %}"></script>
+        <script src="{% static  'stream-dashboard-ui-kit/assets/vendor/bootstrap/bootstrap.min.js' %}"></script>
+
+        <!-- Plugins -->
+        <script src="{% static  'stream-dashboard-ui-kit/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+
+        <!-- Initialization  -->
+        <script src="{% static  'stream-dashboard-ui-kit/assets/js/sidebar-nav.js' %}"></script>
+        <script src="{% static  'stream-dashboard-ui-kit/assets/js/main.js' %}"></script>
+    {% endfor %}
+
+{% endif %}
